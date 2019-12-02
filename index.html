@@ -53,21 +53,30 @@
     const oldest = inventors.sort((a, b) => ((a.passed - a.year) > (b.passed - b.year)) ? 1 : -1);
     console.table(oldest);
 
-    // 6. Create a list of Boulevards in Paris that contain 'de' anywhere in the name.
-    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    /* 
+    // 6. Go to https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris and in the console, create a list of Boulevards in Paris that contain 'de' anywhere in the name:
     
     // Get each element on the page with the class .mw-category:
     const category = document.querySelector('.mw-category');
-    // Get just the link within each .mw-category element:
-    const links = category.querySelectorAll('a');
-    // Get just the text inside each link:
-    const de = links.map(link => link.textContent);
-
-    // RESUME VIDEO: 13:45
-
+    // Get just the link within each .mw-category element and convert results into an array:
+    const links = Array.from(category.querySelectorAll('a'));
+    
+    const de = links
+      // Get just the text inside each link:
+      .map(link => link.textContent)
+      // Only include results that have 'de':
+      .filter(streetName => streetName.includes('de'));
+    */
 
     // 7. Sort Exercise
     // Sort the people alphabetically by last name.
+    const alpha = people.sort( ( previousOne, nextOne ) => {
+      // Split last name from first name:
+      const [aLast, aFirst] = previousOne.split(', ');
+      const [bLast, bFirst] = nextOne.split(', ');
+      return aLast > bLast ? 1 : -1;
+    });
+    console.log(alpha);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these:
