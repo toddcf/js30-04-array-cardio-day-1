@@ -74,13 +74,29 @@
       // Split last name from first name:
       const [aLast, aFirst] = previousOne.split(', ');
       const [bLast, bFirst] = nextOne.split(', ');
+      // Compare last name of "previousOne" to last name of "nextOne":
       return aLast > bLast ? 1 : -1;
     });
     console.log(alpha);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these:
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const vehicles = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const transportation = vehicles.reduce(function(obj, vehicle) {
+      // If there is no object vehicle tallied yet, start the tally at zero:
+      if (!obj[vehicle]) {
+        obj[vehicle] = 0;
+      }
+      // Increment the obj[vehicle]:
+      obj[vehicle]++;
+      return obj;
+    },
+    // Blank starter object for zero-count of each vehicle:
+    {}
+    );
+
+    console.log(transportation);
 
   </script>
 </body>
